@@ -9,9 +9,67 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <title>Tour Menu</title>
+    <style>
+      .carousel-caption{
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+      }
+      .card-title{
+        color: rgb(236, 186, 78);
+        font-size: 30px;
+        font-family: 'Courier New', Courier, fantasy;
+        font-weight: bold;
+        text-shadow: 2px 2px 4px #413838;
+      }
+      .card-text{
+        font-size: 20px;
+        font-family: 'Courier New', Courier, monospace;
+      }
+      .btn{
+        font-weight: bold;
+      }
+      .accordion-button{
+        font-weight: bold;
+        font-size: 20px;
+      }
+      .accordion-body{
+        font-size: 18px;
+        font-family: 'Courier New', Courier, monospace;
+      }
+      .offcanvas-title{
+        font-weight: bold;
+        font-size: 25px;
+      }
+      .form-label{
+        font-weight: bold;
+      }
+      .form-select{
+        font-weight: bold;
+      }
+      .form-control{
+        font-weight: bold;
+      }
+      .btn-close{
+        font-weight: bold;
+      }
+      .btn-outline-success{
+        font-weight: bold;
+      }
+      .btn-outline-danger{
+        font-weight: bold;
+      }
+      .navbar-brand h3{
+        font-weight: bold;
+        font-size: 25px;
+        font-family: 'Courier New', Courier, monospace;
+        color: rgb(133, 4, 4);
+        text-shadow: 2px 2px 4px #493d3d;
+        text-align: center;
+      }
+    </style>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgba(19, 139, 15, 0.651);">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgba(155, 160, 233, 0.774);">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Nature</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,12 +98,72 @@
           </ul>
         </li>
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-warning" type="submit">Search</button>
-      </form>
+     <!-- Trigger button to open offcanvas -->
+<button class="btn btn-outline-warning" type="button" data-bs-toggle="offcanvas" data-bs-target="#ticketBookingPanel" aria-controls="ticketBookingPanel">
+  Book Ticket
+</button>
+
+<!-- Offcanvas panel -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="ticketBookingPanel" aria-labelledby="ticketBookingPanelLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="ticketBookingPanelLabel">Ticket Booking</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <!-- Ticket booking form or content goes here -->
+    <form>
+      <div class="mb-3">
+        <label for="nameInput" class="form-label">Full Name</label>
+        <input type="text" class="form-control" id="nameInput" placeholder="Enter your name">
+      </div>
+      <div class="mb-3">
+        <label for="emailInput" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="emailInput" placeholder="name@example.com">
+      </div>
+      <div class="mb-3">
+        <label for="tourSelect" class="form-label">Select Tour</label>
+        <select class="form-select" id="tourSelect">
+          <option selected>Select a tour</option>
+          <option value="1">Tour 1</option>
+          <option value="2">Tour 2</option>
+          <option value="3">Tour 3</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-outline-success">Confirm Booking</button>
+    </form>
+  </div>
+</div>
+
+  <!-- Button trigger modal -->
+<button type="button" class="btn btn-outline-primary m-1" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Login
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Login for stay Updated!</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Provide your Name: 
+        <input type="text" class="form-control" placeholder="Your name here" required>
+        <br>
+        Provide your Email:
+        <input type="email" class="form-control" placeholder="Your email here" required>
+        <br>
+        Write your feedbacks here:
+        <textarea class="form-control" placeholder="Your feedbacks here"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-outline-success">Submit</button>
+      </div>
     </div>
   </div>
+</div>
 </nav>
 
 
@@ -55,34 +173,42 @@
     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="https://images.pexels.com/photos/847393/pexels-photo-847393.jpeg" class="d-block w-100" height="700px">
+      <img src="https://i.pinimg.com/originals/26/02/be/2602bed9bee3c34ffc4d4d173b3c6071.gif" class="d-block w-100" height="700px">
       <div class="carousel-caption d-none d-md-block">
         <h5>Seas & Oceans</h5>
-        <p>Some representative placeholder content for the first slide.</p>
+        <p>Endless seas whisper secrets to the shore, while oceans dance with the horizon in an eternal embrace.</p>
       </div>
     </div>
     <div class="carousel-item">
-      <img src="https://images.pexels.com/photos/33720953/pexels-photo-33720953.jpeg" class="d-block w-100" height="700px">
+      <img src="https://i.pinimg.com/originals/2f/10/ce/2f10ce69b96c0611989308b0abc68e70.gif" class="d-block w-100" height="700px">
       <div class="carousel-caption d-none d-md-block">
         <h5>Mounts & Valleys</h5>
-        <p>Some representative placeholder content for the second slide.</p>
+        <p>Majestic mountains stand tall, casting shadows over peaceful valleys that cradle nature’s quiet beauty.</p>
       </div>
     </div>
     <div class="carousel-item">
-      <img src="https://images.pexels.com/photos/7126070/pexels-photo-7126070.jpeg" class="d-block w-100" height="700px">
+      <img src="https://i.pinimg.com/originals/66/94/11/669411a8a3da9affd30c9f89364918f2.gif" class="d-block w-100" height="700px">
       <div class="carousel-caption d-none d-md-block">
         <h5>Hills & Meadows</h5>
-        <p>Some representative placeholder content for the third slide.</p>
+        <p>Rolling hills kissed by the sun, dotted with lush meadows where nature shows off its greenest carpet.</p>
       </div>
     </div>
     <div class="carousel-item">
-      <img src="https://images.pexels.com/photos/1632259/pexels-photo-1632259.jpeg" class="d-block w-100" height="700px">
+      <img src="https://i.pinimg.com/originals/ed/a5/73/eda5739966cb33768d8ad0d77d7307ce.gif" class="d-block w-100" height="700px">
       <div class="carousel-caption d-none d-md-block">
         <h5>Cliffs & Waterfalls</h5>
-        <p>Some representative placeholder content for the third slide.</p>
+        <p>Dramatic cliffs dare the waterfalls to leap boldly into the unknown, creating nature’s most thrilling show 🌊.</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="https://64.media.tumblr.com/688904bf5db841df813d1f8054f664ca/ce14eba2d51835aa-07/s540x810/9d66e27d7ba4842b3e4379979a6b288f23f485bd.gif" class="d-block w-100" height="700px">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Lakes & Rivers</h5>
+        <p>Calm lakes mirror the sky while rivers carve their way through the land, whispering stories as they go.</p>
       </div>
     </div>
   </div>
@@ -97,40 +223,52 @@
 </div>
 <br>
 
-<div class="container d-flex">
+
+ <nav class="navbar navbar-light" style="background-color: rgb(238, 178, 188);">
+  <div class="container-fluid">
+    <a class="navbar-brand"> <h3><b>Some suggestions for you ✨</b></h3></a>
+    <form class="d-flex">
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+<br>
+<div class="container d-block"></div>
 <div class="card mb-3 bg-dark text-white">
-  <img src="https://images.pexels.com/photos/32484144/pexels-photo-32484144.jpeg" class="card-img" alt="...">
+  <img src="https://i.pinimg.com/originals/42/1e/4f/421e4f9e5823fe22067f25da6337449e.gif" class="card-img" height="600px">
   <div class="card-img-overlay">
     <h5 class="card-title">Paris 🥐</h5>
-    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-   <a href="#" class="btn btn-outline-primary">More about it</a>
+    <p class="card-text">Just looking for a ’Seine’ of direction; turns out I’m simply in-Seine. In Paris, even the pigeons have better fashion sense than me 👠🕊️</p>
+   <a href="#" class="btn btn-outline-danger">More about it</a>
   </div>
 </div>
 
 <div class="card mb-3 bg-dark text-white">
-  <img src="https://images.pexels.com/photos/15516367/pexels-photo-15516367.jpeg" class="card-img" alt="...">
+  <img src="https://i.redd.it/y7haadgb8epe1.gif" class="card-img" height="600px">
   <div class="card-img-overlay">
     <h5 class="card-title">Los Angeles 🍕</h5>
-    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-    <a href="#" class="btn btn-outline-primary">More about it</a>
+    <p class="card-text">where sunshine and traffic jams compete for your attention every day ☀️🚗. The city of dreams that makes you practice patience — mostly in parking lots and freeways 🅿️🙄. 
+      And yes, the palm trees are pretty, but they won’t save you from LA’s famous gridlock 🌴😅.</p>
+    <a href="#" class="btn btn-outline-danger">More about it</a>
   </div>
 </div>
 
 <div class="card mb-3 bg-dark text-white">
-  <img src="https://images.pexels.com/photos/6059792/pexels-photo-6059792.jpeg" class="card-img" alt="...">
+  <img src="https://cdnb.artstation.com/p/assets/images/images/066/149/065/original/killer-rabbit-media-chinese-alleyway-export.gif?1692171513" class="card-img" height="600px">
   <div class="card-img-overlay">
     <h5 class="card-title">Tokyo 🍣</h5>
-    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-    <a href="#" class="btn btn-outline-primary">More about it</a>
+    <p class="card-text">Just a tiny little village with a few people, lights, and skyscrapers. 🤯✨🏙️</p>
+    <a href="#" class="btn btn-outline-danger">More about it</a>
   </div>
 </div>
 
 <div class="card mb-3 bg-dark text-white">
-  <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/16/38/4c/cd/photo8jpg.jpg?w=900&h=500&s=1" class="card-img" alt="...">
+  <img src="https://f8n-production-collection-assets.imgix.net/0x461E8b1B9DBaF2cCCAeaD7e3fF0fF5b8Cb51562e/5/nft.gif?q=70&fnd_key=v1" class="card-img" height="600px">
   <div class="card-img-overlay">
-    <h5 class="card-title">Melibu 🍹</h5>
-    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-    <a href="#" class="btn btn-outline-primary">More about it</a>
+    <h5 class="card-title">Malibu 🍹</h5>
+    <p class="card-text">Sunsets in Malibu? So repetitive—just another masterpiece every evening 🌅😏</p>
+    <a href="#" class="btn btn-outline-danger">More about it</a>
   </div>
 </div>
 </div>
@@ -187,3 +325,8 @@
     -->
   </body>
 </html>
+
+
+
+
+
