@@ -17,7 +17,7 @@
       .card-title{
         color: rgb(236, 186, 78);
         font-size: 30px;
-        font-family: 'Courier New', Courier, fantasy;
+        font-family: 'Courier New', Courier, cursive;
         font-weight: bold;
         text-shadow: 2px 2px 4px #413838;
       }
@@ -66,6 +66,42 @@
         text-shadow: 2px 2px 4px #493d3d;
         text-align: center;
       }
+      footer{
+        background-color: #300202;
+      }
+      footer p, footer h5, footer .blockquote-footer{
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 18px;
+      }
+      footer .blockquote{
+        font-size: 20px;
+      }
+      footer .blockquote p{
+        color: rgb(255, 255, 255);
+      }
+      footer .blockquote .blockquote-footer{
+        color: rgb(255, 255, 255);
+      }
+      body {
+        background-color: #f0f8ff;
+      }
+     @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-20px);
+    }
+    60% {
+      transform: translateY(-10px);
+    }
+  }
+
+/* Apply the bounce animation */
+.bounce {
+  display: inline-block; /* needed to apply transform */
+  animation: bounce 2s infinite;
+}
     </style>
   </head>
   <body>
@@ -88,7 +124,7 @@
             Destinations
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Cities</a></li>
+            <li><a class="dropdown-item" href="cities.html">Cities</a></li>
             <li><a class="dropdown-item" href="#">Islands</a></li>
             <li><a class="dropdown-item" href="#">Villages</a></li>
             <li><hr class="dropdown-divider"></li>
@@ -235,37 +271,44 @@
 </nav>
 <br>
 <div class="container d-block"></div>
-<div class="card mb-3 bg-dark text-white">
+<div class="card mb-4 bg-dark text-white">
   <img src="https://i.pinimg.com/originals/42/1e/4f/421e4f9e5823fe22067f25da6337449e.gif" class="card-img" height="600px">
   <div class="card-img-overlay">
+    <div class="bounce">
     <h5 class="card-title">Paris 🥐</h5>
     <p class="card-text">Just looking for a ’Seine’ of direction; turns out I’m simply in-Seine. In Paris, even the pigeons have better fashion sense than me 👠🕊️</p>
    <a href="#" class="btn btn-outline-danger">More about it</a>
+    </div>
   </div>
 </div>
 
-<div class="card mb-3 bg-dark text-white">
+<div class="card mb-4 bg-dark text-white">
   <img src="https://i.redd.it/y7haadgb8epe1.gif" class="card-img" height="600px">
   <div class="card-img-overlay">
+    <div class="bounce">
     <h5 class="card-title">Los Angeles 🍕</h5>
     <p class="card-text">where sunshine and traffic jams compete for your attention every day ☀️🚗. The city of dreams that makes you practice patience — mostly in parking lots and freeways 🅿️🙄. 
       And yes, the palm trees are pretty, but they won’t save you from LA’s famous gridlock 🌴😅.</p>
     <a href="#" class="btn btn-outline-danger">More about it</a>
   </div>
+  </div>
 </div>
 
-<div class="card mb-3 bg-dark text-white">
+<div class="card mb-4 bg-dark text-white">
   <img src="https://cdnb.artstation.com/p/assets/images/images/066/149/065/original/killer-rabbit-media-chinese-alleyway-export.gif?1692171513" class="card-img" height="600px">
   <div class="card-img-overlay">
+    <div class="bounce">
     <h5 class="card-title">Tokyo 🍣</h5>
     <p class="card-text">Just a tiny little village with a few people, lights, and skyscrapers. 🤯✨🏙️</p>
     <a href="#" class="btn btn-outline-danger">More about it</a>
   </div>
+  </div>
 </div>
 
-<div class="card mb-3 bg-dark text-white">
+<div class="card mb-4 bg-dark text-white">
   <img src="https://f8n-production-collection-assets.imgix.net/0x461E8b1B9DBaF2cCCAeaD7e3fF0fF5b8Cb51562e/5/nft.gif?q=70&fnd_key=v1" class="card-img" height="600px">
   <div class="card-img-overlay">
+    <div class="bounce">
     <h5 class="card-title">Malibu 🍹</h5>
     <p class="card-text">Sunsets in Malibu? So repetitive—just another masterpiece every evening 🌅😏</p>
     <a href="#" class="btn btn-outline-danger">More about it</a>
@@ -313,6 +356,24 @@
     </div>
   </div>
 </div>
+<br>
+
+<footer class="bg-dark text-light py-4 mt-auto">
+  <div class="container text-center">
+    <div class="mb-3">
+      <h5>Contact Us</h5>
+      <p>Email: info@tourmenu.com | Phone: +123 456 7890</p>
+      <p>Address: 123 Travel Street, Adventure City</p>
+    </div>
+    <blockquote class="blockquote">
+      <p class="mb-0 fst-italic">"Travel is the only thing you buy that makes you richer."</p>
+      <br>
+      <footer class="blockquote-footer text-light">Anonymous</footer>
+    </blockquote>
+  </div>
+</footer>
+
+
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
