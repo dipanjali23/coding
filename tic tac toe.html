@@ -168,7 +168,7 @@
       cellEl.textContent = currentPlayer;
       cellEl.classList.add('disabled');
       if (checkWinner()) {
-        statusEl.textContent = `Player ${currentPlayer} wins! 🎉`;
+        statusEl.textContent = `Player ${currentPlayer} Wins! 🎉`;
         gameOver = true;
         highlightWinningCells();
       } else if (isBoardFull()) {
