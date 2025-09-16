@@ -12,33 +12,49 @@
     color: white;
     font-family: Arial, sans-serif;
   }
- canvas{
+  canvas {
+    display: block;
     background: black;
- }
+  }
 </style>
 </head>
 <body>
 <div id="startScreen" style="position:fixed;top:0;left:0;width:100%;height:100%;background:black;display:flex;justify-content:center;align-items:center;flex-direction:column;z-index:10;">
   <button id="startButton" style="font-size:24px;padding:20px 40px;cursor:pointer;">Start Game</button>
 </div>
-<canvas width="100%" height="100%"></canvas>
+
+<canvas id="gameCanvas"></canvas>
+
 <script>
   const canvas = document.getElementById('gameCanvas');
   const ctx = canvas.getContext('2d');
+
+  // Set full screen canvas
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  window.addEventListener("resize", () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  });
 
   // Starfield background
   const stars = [];
   const numStars = 100;
 
-  for (let i = 0; i < numStars; i++) {
-    stars.push({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      radius: Math.random() * 1.5,
-      alpha: Math.random(),
-      alphaChange: 0.01 * (Math.random() < 0.5 ? 1 : -1)
-    });
+  function initStars() {
+    stars.length = 0;
+    for (let i = 0; i < numStars; i++) {
+      stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        radius: Math.random() * 1.5,
+        alpha: Math.random(),
+        alphaChange: 0.01 * (Math.random() < 0.5 ? 1 : -1)
+      });
+    }
   }
+  initStars();
 
   // Game objects
   const spaceship = {
@@ -100,7 +116,6 @@
   }
 
   function drawSpaceship() {
-    // Draw spaceship with gradient and shapes
     const gradient = ctx.createLinearGradient(spaceship.x, spaceship.y, spaceship.x, spaceship.y + spaceship.height);
     gradient.addColorStop(0, '#00ffff');
     gradient.addColorStop(1, '#004466');
@@ -120,7 +135,6 @@
   }
 
   function drawBoss() {
-    // Draw boss with gradient and details
     const gradient = ctx.createLinearGradient(boss.x, boss.y, boss.x, boss.y + boss.height);
     gradient.addColorStop(0, '#ff4444');
     gradient.addColorStop(1, '#880000');
@@ -142,7 +156,7 @@
     ctx.lineTo(boss.x + 110, boss.y + 110);
     ctx.stroke();
 
-    // Glow effect around boss
+    // Glow effect
     ctx.shadowColor = 'rgba(255, 0, 0, 0.7)';
     ctx.shadowBlur = 20;
     ctx.fillRect(boss.x, boss.y, boss.width, boss.height);
@@ -150,7 +164,6 @@
   }
 
   function drawLaser(laser) {
-    // Draw laser with glow effect
     ctx.fillStyle = laser.color;
     ctx.shadowColor = laser.color;
     ctx.shadowBlur = 10;
@@ -183,7 +196,7 @@
         speed: 7,
         color: 'cyan'
       });
-      spaceship.cooldown = 15; // cooldown frames
+      spaceship.cooldown = 15;
     }
     if (spaceship.cooldown > 0) {
       spaceship.cooldown--;
@@ -200,7 +213,6 @@
   }
 
   function moveBoss() {
-    // Unpredictable movement: random direction changes occasionally
     if (Math.random() < 0.02) {
       boss.directionX = Math.random() < 0.5 ? -1 : 1;
       boss.directionY = Math.random() < 0.5 ? -1 : 1;
@@ -208,7 +220,6 @@
     boss.x += boss.speedX * boss.directionX;
     boss.y += boss.speedY * boss.directionY;
 
-    // Keep boss inside canvas bounds
     if (boss.x < 0) boss.x = 0;
     if (boss.x + boss.width > canvas.width) boss.x = canvas.width - boss.width;
     if (boss.y < 0) boss.y = 0;
@@ -225,7 +236,7 @@
         speed: 6,
         color: 'red'
       });
-      boss.cooldown = 50; // cooldown frames
+      boss.cooldown = 50;
     }
     if (boss.cooldown > 0) {
       boss.cooldown--;
@@ -260,7 +271,7 @@
     shootBossLaser();
     moveBossLasers();
 
-    // Check collisions: spaceship lasers hit boss
+    // spaceship lasers hit boss
     spaceship.lasers.forEach((laser, index) => {
       if (checkCollision(laser, boss)) {
         boss.health -= 5;
@@ -268,16 +279,14 @@
       }
     });
 
-    // Check collisions: boss lasers hit spaceship
+    // boss lasers hit spaceship
     boss.lasers.forEach((laser, index) => {
       if (checkCollision(laser, spaceship)) {
-        // For simplicity, end game on hit
         alert('Game Over! The boss hit your spaceship.');
         document.location.reload();
       }
     });
 
-    // Check boss health
     if (boss.health <= 0) {
       alert('You defeated the giant alien boss! Congratulations!');
       document.location.reload();
@@ -286,20 +295,18 @@
 
   function draw() {
     drawStarfield();
-
     drawSpaceship();
     drawBoss();
 
     spaceship.lasers.forEach(drawLaser);
     boss.lasers.forEach(drawLaser);
 
-    // Draw boss health bar
+    // Boss health bar
     ctx.fillStyle = 'white';
     ctx.fillRect(20, 20, 200, 20);
     ctx.fillStyle = 'green';
     ctx.fillRect(20, 20, 2 * boss.health, 20);
 
-    // Draw instructions
     if (!gameRunning) {
       ctx.fillStyle = 'white';
       ctx.font = '24px Arial';
